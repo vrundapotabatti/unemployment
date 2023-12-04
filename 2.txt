@@ -1,0 +1,20 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("Iris2.csv")
+df.head()
+df.isnull().sum()
+df.duplicated().sum()
+df.drop_duplicates(inplace = True)
+df.info()
+df.describe()
+df.columns
+df_g=df.groupby('Region')['Area'].apply(lambda x: x.mode().iloc[0]).reset_index()
+df_g.columns = ['Region', 'Mode_Area']
+df_g
+df.isna().sum().reset_index().rename(columns={0:'count'})
+df.dropna(how='all', inplace=True)
+df.isna().sum().reset_index().rename(columns={0:'count'})
+df['Region'].value_counts().reset_index()
+
